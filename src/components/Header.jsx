@@ -1,35 +1,63 @@
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
 
-function Header({ cartItemCount, onCartClick }) {
+function Header({ cartItemCount, onCartClick, searchTerm, onSearchChange }) {
+
+  const navigate = useNavigate();
+
+  const categories = ['Electronics', 'Accessories', 'Sports'];
 
   return (
     <header className="header">
 
       <div className="header-container">
 
-        <div className="header-content">
+        {/* Top row */}
+        <div className="header-top">
 
-          <div className="header-text">
+          <Link to="/" className="header-logo">
             <h1 className="header-title">🛒 QuickCart</h1>
-            <p className="header-subtitle">
-              Your one-stop shop for everything
-            </p>
-          </div>
+          </Link>
 
-          <button
-            className="cart-icon-btn"
-            onClick={onCartClick}
-          >
-
+          <button className="cart-icon-btn" onClick={onCartClick}>
             🛒
-
             {cartItemCount > 0 && (
-              <span className="cart-badge">
-                {cartItemCount}
-              </span>
+              <span className="cart-badge">{cartItemCount}</span>
             )}
-
           </button>
+
+        </div>
+
+        {/* Navigation */}
+        <nav className="header-nav">
+
+          <Link to="/" className="nav-link">Home</Link>
+
+          {categories.map(cat => (
+            <Link
+              key={cat}
+              to={`/category/${cat}`}
+              className="nav-link"
+            >
+              {cat}
+            </Link>
+          ))}
+
+          <Link to="/cart" className="nav-link">Cart</Link>
+
+        </nav>
+
+        {/* Search */}
+        <div className="search-container">
+
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="search-input"
+          />
 
         </div>
 
@@ -37,7 +65,6 @@ function Header({ cartItemCount, onCartClick }) {
 
     </header>
   );
-
 }
 
 export default Header;
