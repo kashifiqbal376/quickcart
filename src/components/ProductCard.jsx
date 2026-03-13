@@ -1,7 +1,7 @@
-import React from 'react';
 import '../styles/ProductCard.css';
 
-function ProductCard({ product }) {
+function ProductCard({ product, onAddToCart }) {
+
   return (
     <div className="product-card">
 
@@ -31,10 +31,18 @@ function ProductCard({ product }) {
           </span>
         </div>
 
+        <button
+          className="add-to-cart-btn"
+          onClick={() => onAddToCart(product)}
+        >
+          Add to Cart
+        </button>
+
       </div>
 
     </div>
   );
+
 }
 
 export default ProductCard;
