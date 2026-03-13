@@ -19,7 +19,7 @@ export const products = [
     id: 3,
     name: "Laptop Stand",
     price: 49.99,
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=60",
     description: "Ergonomic aluminum laptop stand for better posture",
     category: "Accessories"
   },
